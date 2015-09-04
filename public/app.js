@@ -1,7 +1,8 @@
 /**
  * Created by Administrator on 2/8/15.
  */
-var myapp = angular.module('myapp', ['ngRoute','mongolabResourceHttp', 'textAngular', 'ngProgress'], function($routeProvider){
+//var myapp = angular.module('myapp', ['ngRoute','mongolabResourceHttp', 'textAngular', 'ngProgress'], function($routeProvider){ 
+var myapp = angular.module('myapp', ['ngRoute','mongolabResourceHttp', 'textAngular'], function($routeProvider){
     $routeProvider
         .when('/home', {
             templateUrl: 'templates/home.html',
@@ -115,24 +116,24 @@ myapp.controller('RegistrationFormCtrl', function($scope, $location, ngProgress,
         $location.path('/trainings');
     }
     var changeSuccess = function(){
-        ngProgress.complete();
+     //   ngProgress.complete();
         alert('Thanks for registering! You will hear from us soon.');
         $location.path('/trainings');
     };
     var changeError = function() {
-        ngProgress.complete();
+     //   ngProgress.complete();
         throw new Error("Something went wrong..");
     };
 
     $scope.registration = registration;
 
     $scope.save = function() {
-        ngProgress.start();
+    //    ngProgress.start();
         $scope.registration.$save(changeSuccess, changeError);
         // $scope.training.$saveOrUpdate(changeSuccess,changeSuccess,changeError,changeError);
     };
     $scope.remove = function(){
-        ngProgress.start();
+    //    ngProgress.start();
         $scope.registration.$remove(changeSuccess,changeError);
     };
     $scope.hasChanges = function() {
@@ -154,24 +155,24 @@ myapp.controller('TrainingFormCtrl', function($scope, $location, ngProgress, Sha
 
     var trainingCopy = angular.copy(training);
     var changeSuccess = function(){
-        ngProgress.complete();
+    //    ngProgress.complete();
         alert('Training has been added successfully');
         $location.path('/trainings');
     };
     var changeError = function() {
-        ngProgress.complete();
+     //   ngProgress.complete();
         throw new Error("Something went wrong..");
     };
 
     $scope.training = training;
 
     $scope.save = function() {
-        ngProgress.start();
+    //    ngProgress.start();
         $scope.training.$save(changeSuccess, changeError);
        // $scope.training.$saveOrUpdate(changeSuccess,changeSuccess,changeError,changeError);
     };
     $scope.remove = function(){
-        ngProgress.start();
+    //    ngProgress.start();
         $scope.training.$remove(changeSuccess,changeError);
     };
     $scope.hasChanges = function() {
