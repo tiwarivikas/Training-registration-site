@@ -1,0 +1,15 @@
+<div class="container">
+    <h1>{{training.name}}</h1>
+
+    <div>
+        <p><strong>Title: {{training.name}}</strong></p>
+        <p><strong>Date: {{training.date | date}} - Duration: {{training.duration}}</strong></p>
+        <p><strong>Region: {{training.region.Name}}</strong></p>
+        <p><a class="btn btn-primary btn-success" ng-href="#new-registration?trainingId={{training._id.$oid}}">Register</a></p>
+
+        <div class="well">
+            <h2>Training Agenda</h2>
+            <p> <div ng-bind-html="training.details"></div></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+
+
+<!-- TODO: Apply Filters to view -->
+<!--<div class="container"> Filter: End-User, Admin, Development
+Location: Delhi, Kolkata, Mumbai, Bangalore</div>-->
+<div class="container">
+    <div class="page-header">
+        <h1><span class="fa fa-list-alt"></span>2015 Enablement Sessions<small><br/>List of enablement trainings for 2015...</small></h1>
+    </div>
+    <b><a ng-href="#/new-training"><span class="glyphicon glyphicon-plus"></span> New Training</a></b>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Training</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="training in trainings">
+            <td>
+                {{training.name}}
+            </td>
+            <td>
+               {{training.category}}
+            </td>
+            <td>{{training.location}}</td>
+            <td>
+                {{training.date | date}}
+            </td>
+            <td>
+                <a class="btn btn-primary btn-success" ng-href="#/training/{{training._id.$oid}}"><span class="fa fa-user"></span> Register</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

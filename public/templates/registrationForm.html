@@ -1,0 +1,57 @@
+<div class="container">
+    <form role="form" name="registrationForm" ng-submit="submitForm()" novalidate>
+        <legend>Enablement Registration</legend>
+        <div class="container">
+        	<div class="panel panel-default">
+        		  <div class="panel-heading">
+        				<h3 class="panel-title">Training Details</h3>
+        		  </div>
+        		  <div class="panel-body">
+        				<h1>Training: {{training.name}}</h1>
+                      <p><b>Date: {{training.date | date}}</b></p>
+                        <p><b>Location: {{training.region.Name}}</b></p>
+        		  </div>
+        	</div>
+        </div>
+        <div class="form-group">
+            <!-- NAME -->
+            <label for="name" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10" ng-class="{ 'has-error' : registrationForm.name.$invalid && (registrationForm.name.$dirty || submitted)}">
+                <input type="text" class="form-control" name='name' id="name" placeholder="Enter your name.." ng-required="true" ng-model="registration.name">
+                <p ng-show="registrationForm.name.$error.required && (registrationForm.name.$dirty || submitted)" class="help-block">Your name is required.</p>
+            </div>
+            <!-- Organization Name -->
+            <label for="org" class="col-sm-2 control-label">Organization</label>
+            <div class="col-sm-10" ng-class="{'has-error': registrationForm.org.$invalid && (registrationForm.org.$dirty || submitted)}">
+                <input type="text" class="form-control" id="org" name="org" placeholder="Organization" ng-model="registration.org" ng-required="true">
+                <p ng-show="registrationForm.org.$error.required && (registrationForm.org.$dirty || submitted)" class="help-block">Organization name is required.</p>
+            </div>
+            <!-- Email Address -->
+            <label for="email" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10" ng-class="{'has-error': registrationForm.email.$invalid && (registrationForm.email.$dirty || submitted)}">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="registration.email" ng-required="true">
+                <p ng-show="registrationForm.email.$error.required && (registrationForm.email.$dirty || submitted)" class="help-block">Email Address is required.</p>
+                <p ng-show="registrationForm.email.$error.email && (registrationForm.email.$dirty || submitted)" class="help-block">Enter a valid email address.</p>
+            </div>
+            <!-- Mobile Number -->
+            <label for="mobile" class="col-sm-2 control-label">Mobile Number</label>
+            <div class="col-sm-10" ng-class="{'has-error': registrationForm.mobile.$invalid && (registrationForm.mobile.$dirty || submitted)}">
+                <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" ng-model="registration.mobile" ng-required="true" ng-pattern="/^[789]\d{9}$/" maxlength="10">
+                <p ng-show="registrationForm.mobile.$error.required && (registrationForm.mobile.$dirty || submitted)" class="help-block">Contact number is required.</p>
+                <p ng-show="registrationForm.mobile.$error.pattern && (registrationForm.mobile.$dirty || submitted)" class="help-block">Enter a valid Mobile number.</p>
+            </div>
+            <!-- Region -->
+            <label for="region" class="col-sm-2 control-label">Region</label>
+            <div class="col-sm-10" ng-class="{ 'has-error' : registrationForm.region.$invalid  && (registrationForm.region.$dirty || submitted)}">
+                <select name="region" id="region" class="form-control"
+                        ng-model="registration.region"
+                        ng-options="region.RegionID as region.Name for region in regionList"
+                        ng-required="true">
+                    <option value=''>Select</option>
+                </select>
+                <p ng-show="registrationForm.region.$error.required  && (registrationForm.region.$dirty || submitted)" class="help-block">Select Region.</p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary"><span class="fa fa-check"></span>Submit</button>
+    </form>
+</div>

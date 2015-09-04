@@ -1,0 +1,63 @@
+<div class="container">
+    <form role="form" name="trainingForm" novalidate>
+        <legend>New Enablement Training</legend>
+        <div class="panel panel-default">
+        	  <div class="panel-heading">
+        			<h3 class="panel-title">Enter Training Details</h3>
+        	  </div>
+        	  <div class="panel-body">
+                  <div class="form-group">
+                      <!-- Title - Training Name -->
+                      <label for="name" class="col-sm-2 control-label">Title</label>
+                      <div class="col-sm-10" ng-class="{ 'has-error' : trainingForm.name.$invalid && (trainingForm.name.$dirty || submitted)}">
+                          <input type="text" class="form-control" name='name' id="name" placeholder="Enter title for Training.." ng-required="true" ng-model="training.name">
+                          <p ng-show="trainingForm.name.$error.required && (trainingForm.name.$dirty || submitted)" class="help-block">Title is required.</p>
+                      </div>
+                      <!-- Details -->
+                      <label for="details" class="col-sm-2 control-label">Details/Agenda for Training</label>
+                      <div class="col-sm-10" ng-class="{'has-error': trainingForm.details.$invalid && (trainingForm.details.$dirty || submitted)}">
+                          <!--<textarea name="details" class="form-control" id="details" name="details" cols="30" rows="10" ng-required="true" placeholder="Training Agenda" ng-model="training.details2" ></textarea>-->
+                          <div text-angular="text-angular" placeholder="Training Agenda" id="details" name="details" ng-model="training.details" ta-disabled='false'></div>
+                          <p ng-show="trainingForm.details.$error.required && (trainingForm.details.$dirty || submitted)" class="help-block">Details required.</p>
+                      </div>
+                      <!-- Training Date -->
+                      <label for="date" class="col-sm-2 control-label">Training Date</label>
+                      <div class="col-sm-10" ng-class="{'has-error': trainingForm.date.$invalid && (trainingForm.date.$dirty || submitted)}">
+                          <input type="date" class="form-control" id="date" name="date" placeholder="Training Date" ng-model="training.date" ng-required="true">
+                          <p ng-show="trainingForm.date.$error.required && (trainingForm.date.$dirty || submitted)" class="help-block">Training Date is required.</p>
+                          <p ng-show="trainingForm.date.$error.date && (trainingForm.date.$dirty || submitted)" class="help-block">Enter a valid Date.</p>
+                      </div>
+                      <!-- Training Duration -->
+                      <label for="duration" class="col-sm-2 control-label">Training Duration</label>
+                      <div class="col-sm-10" ng-class="{'has-error': trainingForm.duration.$invalid && (trainingForm.duration.$dirty || submitted)}">
+                          <input type="number" class="form-control" id="duration" name="duration" placeholder="Training duration" ng-model="training.duration" ng-required="true">
+                          <p ng-show="trainingForm.duration.$error.required && (trainingForm.duration.$dirty || submitted)" class="help-block">Durationis required.</p>
+                          <p ng-show="trainingForm.duration.$error.number && (trainingForm.duration.$dirty || submitted)" class="help-block">Enter a valid duration (numerical).</p>
+                      </div>
+                      <!-- Region -->
+                      <label for="region" class="col-sm-2 control-label">Region</label>
+                      <div class="col-sm-10" ng-class="{ 'has-error' : trainingForm.region.$invalid  && (trainingForm.region.$dirty || submitted)}">
+                          <select name="region" id="region" class="form-control"
+                                  ng-model="training.region"
+                                  ng-options="region.Name for region in regionList"
+                                  ng-required="true">
+                              <option value=''>Select</option>
+                          </select>
+                          <p ng-show="trainingForm.region.$error.required  && (trainingForm.region.$dirty || submitted)" class="help-block">Select Region.</p>
+                      </div>
+
+
+                  </div>
+                  <div class="container">
+                      <br/><br/>
+                      <button type="button" class="btn btn-default btn-primary" ng-click="save()"
+                              ng-disabled="!hasChanges()||trainingForm.$invalid"><span class="fa fa-check"></span>Save</button>
+                      <button type="button" class="btn btn-default btn-warning" ng-href="#/new-training"><span class="fa fa-warning"></span>Abondon</button>
+                      <button type="button" class="btn btn-default btn-danger" ng-click="remove()" ng-disabled="!training.$id()"><span class="fa fa-trash-o"></span>Remove</button>
+
+                  </div>
+        	  </div>
+        </div>
+
+    </form>
+</div>
