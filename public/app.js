@@ -44,7 +44,7 @@ var myapp = angular.module('myapp', ['ngRoute','mongolabResourceHttp', 'textAngu
         .otherwise({redirectTo:'/home'});
 });
 
-myapp.run(function($rootScope, ngProgress) {
+/* myapp.run(function($rootScope, ngProgress) {
    // ngProgress.color('#ffff00');
    // ngProgress.height('5px');
     $rootScope.$on('$routeChangeStart', function(ev,data) {
@@ -53,7 +53,7 @@ myapp.run(function($rootScope, ngProgress) {
     $rootScope.$on('$routeChangeSuccess', function(ev,data) {
         ngProgress.complete();
     });
-});
+}); */
 
 myapp.constant('MONGOLAB_CONFIG',{
     API_KEY:'8I1y-AmgJHMkF77Kxoocn5rFr_Shua6C',
